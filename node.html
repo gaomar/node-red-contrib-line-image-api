@@ -1,0 +1,53 @@
+<script type="text/javascript">
+    RED.nodes.registerType('line-image',{
+        category: 'LINE',
+        color: '#1ad823',
+        defaults: {
+            name: {value: ""},
+            MessageId: {value: ""},
+            AccessToken:{value: "", required:true},
+            output: { value: "binary"},
+        },
+        inputs:1,
+        outputs:1,
+        icon: "arrow-in.png",
+        label: function() {
+            return this.name||"line-image";
+        }
+    });
+ </script>
+ 
+ <script type="text/html" data-template-name="line-image">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-MessageId">
+            <i class="icon-tag"></i>
+            MessageID
+        </label>
+        <input type="text" id="node-input-MessageId" placeholder="LINE MessageID">
+    </div>
+    <div class="form-row">
+        <label for="node-input-AccessToken">
+            <i class="icon-tag"></i>
+            AccessToken
+        </label>
+        <input type="text" id="node-input-AccessToken" placeholder="LINE AccessToken">
+    </div>
+    <div class="form-row">
+        <label for="node-input-tpSlot">
+            <i class="icon-tag"></i>
+            出力形式
+        </label>
+        <select style="width: 200px" id="node-input-output">
+            <option value="binary" >バイナリバッファ</option>
+            <option value="base64" >base64</option>
+        </select>
+    </div>
+ </script>
+ 
+ <script type="text/html" data-help-name="line-image">
+    <p>LINEに投稿された画像を取得します</p>
+ </script>

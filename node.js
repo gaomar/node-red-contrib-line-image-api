@@ -2,16 +2,11 @@ module.exports = (RED) => {
     'use strict';
     
     const axiosBase = require('axios');
+    const Mustache = require('mustache');
 
     const main = function(config) {
         const node = this;
         RED.nodes.createNode(node, config);
-
-        let messageId = '';
-
-        if (config.MessageId.length > 0) {
-            messageId = config.MessageId;
-        }
 
         let output = config.output;
 
@@ -25,12 +20,14 @@ module.exports = (RED) => {
 
         //メインの処理
         const handleEvent = async (event) => {
-            if (messageId.length == 0) {
-                messageId = event.message.id;
+            let targetMessageId = Mustache.render(config.MessageId, msg);
+
+            if (targetMessageId.length == 0) {
+                targetMessageId = event.message.id;
             }
 
             try {
-                const res = await axios.get(`/${messageId}/content`, {
+                const res = await axios.get(`/${targetMessageId}/content`, {
                     responseType: "arraybuffer"
                   });
                 

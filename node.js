@@ -19,7 +19,7 @@ module.exports = (RED) => {
         });
 
         //メインの処理
-        const handleEvent = async (event) => {
+        const handleEvent = async (event, msg) => {
             let targetMessageId = Mustache.render(config.MessageId, msg);
 
             if (targetMessageId.length == 0) {
@@ -44,7 +44,7 @@ module.exports = (RED) => {
 
         node.on('input', async (msg) => {
             Promise
-                .all(msg.payload.events.map(handleEvent))
+                .all(msg.payload.events.map(handleEvent, msg))
                 .then(result => {
                     msg.payload = result[0];
                     node.send(msg)

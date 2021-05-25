@@ -12,7 +12,7 @@ module.exports = (RED) => {
 
         const LINE_TOKEN = config.AccessToken;
         const axios = axiosBase.create({
-            baseURL: `https://api-data.line.me/v2/bot/message/`,
+            baseURL: `https://api-data.line.me/v2/bot/message`,
             headers: {
                 'Authorization': `Bearer ${LINE_TOKEN}`
             }

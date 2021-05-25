@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-line-image-api",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "LINEに投稿された画像を取得することができます",
   "main": "node.js",
   "node-red": {
@@ -22,8 +22,8 @@
   "author": "gaomar",
   "license": "Apache-2.0",
   "dependencies": {
-    "axios": "^0.21.0",
+    "axios": "^0.21.1",
     "express": "^4.17.1",
-    "mustache": "^4.0.1"
+    "mustache": "^4.2.0"
   }
 }
